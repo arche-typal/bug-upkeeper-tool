@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TicketController {
 
     @GetMapping()
-    @ResponseBody
+    //@ResponseBody
     public String dashboard() {
-        return "I will be a dashboard?";
+        //return "I will be a dashboard?";
+        return "form";
     }
 }
