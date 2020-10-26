@@ -15,6 +15,6 @@ public class TicketController {
         String testVariable = "Will this print??? Yes, it will.";
 
         model.addAttribute("testVar", testVariable);
-        return "form";
+        return "testtemplates";
     }
 }
