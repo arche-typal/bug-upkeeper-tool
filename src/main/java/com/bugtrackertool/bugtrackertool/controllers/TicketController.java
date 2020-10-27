@@ -21,6 +21,7 @@ public class TicketController {
         String testVariable = "Will this print??? Yes, it will.";
 
         TestModel testmodel = new TestModel("Wutevah");
+        ticketRepository.save(testmodel);
 
         model.addAttribute("testVar", testVariable);
         model.addAttribute("testModel", testmodel);
