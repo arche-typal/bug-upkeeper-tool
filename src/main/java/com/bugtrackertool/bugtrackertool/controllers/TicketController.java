@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TicketController {
 
-    @Autowired
-    private TicketRepository ticketRepository;
+//    @Autowired
+//    private TicketRepository ticketRepository;
 
     @GetMapping()
     //@ResponseBody
@@ -21,7 +21,7 @@ public class TicketController {
         String testVariable = "Will this print??? Yes, it will.";
 
         TestModel testmodel = new TestModel("Wutevah");
-        ticketRepository.save(testmodel);
+        //ticketRepository.save(testmodel);
 
         model.addAttribute("testVar", testVariable);
         model.addAttribute("testModel", testmodel);
