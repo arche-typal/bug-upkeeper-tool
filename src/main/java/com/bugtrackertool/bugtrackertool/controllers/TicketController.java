@@ -14,6 +14,8 @@ public class TicketController {
     @Autowired
     private TicketRepository ticketRepository;
 
+    private String title = "Bug Tracker Tool";
+
     @GetMapping()
     //@ResponseBody
     public String dashboard(Model model) {
@@ -25,6 +27,7 @@ public class TicketController {
 
         model.addAttribute("testVar", testVariable);
         model.addAttribute("testModel", testmodel);
+        model.addAttribute("titleVar",title);
         return "testtemplates";
     }
 }
