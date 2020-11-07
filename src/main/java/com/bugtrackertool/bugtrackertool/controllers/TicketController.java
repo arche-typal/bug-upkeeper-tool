@@ -1,6 +1,7 @@
 package com.bugtrackertool.bugtrackertool.controllers;
 
 import com.bugtrackertool.bugtrackertool.data.TicketRepository;
+import com.bugtrackertool.bugtrackertool.models.Project;
 import com.bugtrackertool.bugtrackertool.models.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ public class TicketController {
     @Autowired
     private TicketRepository ticketRepository;
 
-    private String title = "Bug Tracker Tool";
+    //private String title = "Bug Tracker Tool";
 
     @GetMapping()
     //@ResponseBody
@@ -25,9 +26,12 @@ public class TicketController {
         TestModel testmodel = new TestModel("Wutevah");
         ticketRepository.save(testmodel);
 
+        Project aProject = new Project("Project Name");
+
+
         model.addAttribute("testVar", testVariable);
         model.addAttribute("testModel", testmodel);
-        model.addAttribute("titleVar",title);
+        //model.addAttribute("titleVar",title);
         return "testtemplates";
     }
 }
