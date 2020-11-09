@@ -3,5 +3,17 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <h1 th:replace="fragments :: header"></h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name:</th>
+        </tr>
+    </thead>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.name}"></td>
+    </tr>
+</table>
+
 </body>
 </html>

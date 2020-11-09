@@ -18,8 +18,9 @@ public class ProjectController {
     @GetMapping()
     //@ResponseBody
     public String projectDashboard(Model model) {
+        String newString = "Hello";
 
-
+        model.addAttribute("projects", projectRepository.findAll());
         return "project/index";
     }
 
