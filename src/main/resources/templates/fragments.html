@@ -8,6 +8,15 @@
 </head>
 
 <body>
-<h1 th:fragment="header">Bug Tracker Tool</h1>
+<header th:fragment="header">
+    <h1 th:text="|Bug Tracker Tool|"></h1>
+    <nav class="sidebar-heading" th:fragment = "linkList">
+        <hr>
+        <a href = "/">Test Template</a> <br/>
+        <a href = "/project/create">Create A Project</a> <br/>
+        <a href = "/project">All Projects </a>
+    </nav>
+</header>
+
 </body>
 </html>
