@@ -1,6 +1,6 @@
 package com.bugtrackertool.bugtrackertool.models.dto;
 
-public class Register {
+public class RegisterDTO {
 
     private String verifyHash;
 
