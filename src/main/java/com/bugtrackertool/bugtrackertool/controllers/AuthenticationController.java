@@ -47,4 +47,12 @@ public class AuthenticationController {
         model.addAttribute(new RegisterDTO());
         return "register";
     }
+
+    @PostMapping("/register")
+    public String processRegisterForm(@ModelAttribute RegisterDTO registerDTO) {
+        User userToStore = new User(registerDTO.getUsername(), registerDTO.getPassword());
+        userRepository.save(userToStore);
+
+        return "redirect:";
+    }
 }
