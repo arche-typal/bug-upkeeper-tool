@@ -2,6 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1 th:replace="fragments :: header"></h1>
+<header th:replace="fragments :: header"></header>
+
+<form method="post">
+    <div>
+        <label>Username
+            <input th:field="${registerDTO.username}" />
+        </label>
+    </div>
+    <div>
+        <label>Password
+            <input th:field="${registerDTO.password}" type="password" />
+        </label>
+    </div>
+
+    <input type="submit" value="Create username" />
+</form>
 </body>
 </html>

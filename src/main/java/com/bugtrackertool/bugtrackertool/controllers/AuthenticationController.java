@@ -2,6 +2,7 @@ package com.bugtrackertool.bugtrackertool.controllers;
 
 import com.bugtrackertool.bugtrackertool.data.UserRepository;
 import com.bugtrackertool.bugtrackertool.models.User;
+import com.bugtrackertool.bugtrackertool.models.dto.RegisterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,5 +40,11 @@ public class AuthenticationController {
 
     private static void setUsernameSessionKey(HttpSession session, User user) {
         session.setAttribute(usernameSessionKey, user.getId());
+    }
+
+    @GetMapping("/register")
+    public String displayRegisterForm(Model model) {
+        model.addAttribute(new RegisterDTO());
+        return "register";
     }
 }
