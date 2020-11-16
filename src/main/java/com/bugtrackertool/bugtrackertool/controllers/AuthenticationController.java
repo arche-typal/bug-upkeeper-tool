@@ -40,7 +40,8 @@ public class AuthenticationController {
     }
 
     private static void setUsernameSessionKey(HttpSession session, User user) {
-        session.setAttribute(usernameSessionKey, user);
+        session.setAttribute(usernameSessionKey, user.getId());
+        session.setAttribute("loggedUser", user);
     }
 
     @GetMapping("/register")
@@ -71,5 +72,11 @@ public class AuthenticationController {
         //User seeValue = getUserFromSession(request.getSession());
 
         return "redirect:";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login";
     }
 }
