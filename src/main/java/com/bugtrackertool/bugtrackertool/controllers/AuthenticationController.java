@@ -2,6 +2,7 @@ package com.bugtrackertool.bugtrackertool.controllers;
 
 import com.bugtrackertool.bugtrackertool.data.UserRepository;
 import com.bugtrackertool.bugtrackertool.models.User;
+import com.bugtrackertool.bugtrackertool.models.dto.LoginDTO;
 import com.bugtrackertool.bugtrackertool.models.dto.RegisterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,5 +55,11 @@ public class AuthenticationController {
         userRepository.save(userToStore);
 
         return "redirect:";
+    }
+
+    @GetMapping("/login")
+    public String displayLogin(Model model) {
+        model.addAttribute(new LoginDTO());
+        return "login";
     }
 }
