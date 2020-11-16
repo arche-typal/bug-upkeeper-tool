@@ -1,5 +1,6 @@
 package com.bugtrackertool.bugtrackertool.controllers;
 
+import com.bugtrackertool.bugtrackertool.data.ProjectRepository;
 import com.bugtrackertool.bugtrackertool.data.TicketRepository;
 import com.bugtrackertool.bugtrackertool.models.Project;
 import com.bugtrackertool.bugtrackertool.models.TestModel;
@@ -17,7 +18,8 @@ public class TicketController {
     @Autowired
     private TicketRepository ticketRepository;
 
-    //private String title = "Bug Tracker Tool";
+//    @Autowired
+//    private ProjectRepository projectRepository;
 
     @GetMapping()
     public String ticketDashboard(Model model) {
@@ -27,17 +29,18 @@ public class TicketController {
     }
 
     @GetMapping("/create")
-    public String createProject(Model model) {
-        model.addAttribute(new TicketDTO());
+    public String createTicket(Model model) {
+        model.addAttribute(new Ticket());
+//        model.addAttribute("projects", projectRepository.findAll());
         return "ticket/create";
     }
 
     @PostMapping("create")
-    public String processFormMethodName(Model model, @ModelAttribute TicketDTO ticketDTO) {
+    public String processTicket(Model model, @ModelAttribute Ticket ticket) {
 
-        Ticket newTicket = new Ticket(ticketDTO.getName(), ticketDTO.getDescription());
+        //Ticket newTicket = new Ticket(ticketDTO.getName(),ticketDTO.getDescription(),ticketDTO.getProject());
 
-        ticketRepository.save(newTicket);
-        return "ticket";
+        ticketRepository.save(ticket);
+        return "redirect:";
     }
 }

@@ -6,13 +6,14 @@
 <form method="post">
     <div class="form-group">
         <label th:for="name">Title
-            <input class="form-control" th:field="${ticketDTO.name}">
+            <input class="form-control" th:field="${ticket.name}">
         </label>
     </div>
     <div class="form-group">
-        <label th:for="description">description
-            <input class="form-control" th:field="${ticketDTO.description}">
+        <label th:for="description">Description
+            <input class="form-control" th:field="${ticket.description}">
         </label>
+
     </div>
     <input type="submit" class="btn btn-primary" value="Submit">
 </form>

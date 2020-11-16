@@ -1,6 +1,7 @@
 package com.bugtrackertool.bugtrackertool.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ticket extends AbstractEntity{
@@ -8,6 +9,9 @@ public class Ticket extends AbstractEntity{
     private String name;
 
     private String description;
+
+//    @ManyToOne
+//    private Project project;
 
     public Ticket(String name, String description) {
         this.name = name;

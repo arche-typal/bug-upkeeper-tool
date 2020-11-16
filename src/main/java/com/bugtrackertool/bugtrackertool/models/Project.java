@@ -1,8 +1,6 @@
 package com.bugtrackertool.bugtrackertool.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Project {
@@ -13,8 +11,13 @@ public class Project {
 
     private String name;
 
-    public Project(String name) {
+    @ManyToOne
+    private Ticket ticket;
+
+
+    public Project(String name, Ticket ticket) {
         this.name = name;
+        this.ticket = ticket;
     }
 
     public Project() {}
@@ -31,11 +34,20 @@ public class Project {
         this.name = name;
     }
 
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", ticket=" + ticket +
                 '}';
     }
 }
