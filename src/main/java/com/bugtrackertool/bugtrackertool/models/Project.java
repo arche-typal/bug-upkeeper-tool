@@ -11,13 +11,12 @@ public class Project {
 
     private String name;
 
-    @ManyToOne
-    private Ticket ticket;
+//    @ManyToOne
+//    private Ticket ticket;
 
 
-    public Project(String name, Ticket ticket) {
+    public Project(String name) {
         this.name = name;
-        this.ticket = ticket;
     }
 
     public Project() {}
@@ -34,20 +33,11 @@ public class Project {
         this.name = name;
     }
 
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
     @Override
     public String toString() {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", ticket=" + ticket +
                 '}';
     }
 }

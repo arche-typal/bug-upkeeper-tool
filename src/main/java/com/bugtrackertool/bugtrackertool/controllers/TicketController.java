@@ -18,8 +18,8 @@ public class TicketController {
     @Autowired
     private TicketRepository ticketRepository;
 
-//    @Autowired
-//    private ProjectRepository projectRepository;
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @GetMapping()
     public String ticketDashboard(Model model) {
@@ -31,7 +31,7 @@ public class TicketController {
     @GetMapping("/create")
     public String createTicket(Model model) {
         model.addAttribute(new Ticket());
-//        model.addAttribute("projects", projectRepository.findAll());
+        model.addAttribute("projects", projectRepository.findAll());
         return "ticket/create";
     }
 

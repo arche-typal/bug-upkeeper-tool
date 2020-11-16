@@ -16,8 +16,8 @@ public class ProjectController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Autowired
-    private TicketRepository ticketRepository;
+//    @Autowired
+//    private TicketRepository ticketRepository;
 
     @GetMapping()
     //@ResponseBody
@@ -30,7 +30,7 @@ public class ProjectController {
     @GetMapping("create")
     public String createProject(Model model) {
         model.addAttribute(new Project());
-        model.addAttribute("tickets", ticketRepository.findAll());
+//        model.addAttribute("tickets", ticketRepository.findAll());
         return "project/create";
     }
 
