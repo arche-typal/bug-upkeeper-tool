@@ -4,7 +4,11 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 <form method="post">
-    <input type="text" name="name">
+    <div class="form-group">
+        <label th:for="name">Project Name
+        <input class="form-control" type="text" name="name">
+        </label>
+    </div>
     <input type="submit" value="submitButtonText">
 </form>
 </body>

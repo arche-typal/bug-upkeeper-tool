@@ -55,7 +55,7 @@ public class AuthenticationController {
         User userToStore = new User(registerDTO.getUsername(), registerDTO.getPassword());
         userRepository.save(userToStore);
 
-        return "redirect:";
+        return "redirect:/project";
     }
 
     @GetMapping("/login")
@@ -71,7 +71,7 @@ public class AuthenticationController {
         //request.setAttribute("loggedUser", userLogged);
         //User seeValue = getUserFromSession(request.getSession());
 
-        return "redirect:";
+        return "redirect:/project";
     }
 
     @GetMapping("/logout")
