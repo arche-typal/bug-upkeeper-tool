@@ -3,5 +3,18 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
+<a href = "/ticket/create">Create A Ticket</a>
+<table>
+    <thead>
+    <tr>
+        <th>Name:</th>
+        <th>Description:</th>
+    </tr>
+    </thead>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.name}"></td>
+        <td th:text="${ticket.description}"></td>
+    </tr>
+</table>
 </body>
 </html>

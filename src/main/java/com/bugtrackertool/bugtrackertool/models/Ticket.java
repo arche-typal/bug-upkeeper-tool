@@ -14,6 +14,8 @@ public class Ticket extends AbstractEntity{
         this.description = description;
     }
 
+    public Ticket() {}
+
     public String getName() {
         return name;
     }

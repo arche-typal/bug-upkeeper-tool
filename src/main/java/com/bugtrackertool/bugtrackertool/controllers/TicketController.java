@@ -19,23 +19,12 @@ public class TicketController {
 
     //private String title = "Bug Tracker Tool";
 
-//    @GetMapping()
-    //@ResponseBody
-//    public String dashboard(Model model) {
-//        //return "I will be a dashboard?";
-//        String testVariable = "Will this print??? Yes, it will.";
-//
-//        TestModel testmodel = new TestModel("Wutevah");
-//        ticketRepository.save(testmodel);
-//
-//        Project aProject = new Project("Project Name");
-//
-//
-//        model.addAttribute("testVar", testVariable);
-//        model.addAttribute("testModel", testmodel);
-//        //model.addAttribute("titleVar",title);
-//        return "testtemplates";
-//    }
+    @GetMapping()
+    public String ticketDashboard(Model model) {
+
+        model.addAttribute("tickets", ticketRepository.findAll());
+        return "ticket/index";
+    }
 
     @GetMapping("/create")
     public String createProject(Model model) {
@@ -49,6 +38,6 @@ public class TicketController {
         Ticket newTicket = new Ticket(ticketDTO.getName(), ticketDTO.getDescription());
 
         ticketRepository.save(newTicket);
-        return "ticket/create";
+        return "ticket";
     }
 }
