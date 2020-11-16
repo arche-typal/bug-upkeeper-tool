@@ -40,7 +40,7 @@ public class AuthenticationController {
     }
 
     private static void setUsernameSessionKey(HttpSession session, User user) {
-        session.setAttribute(usernameSessionKey, user.getId());
+        session.setAttribute(usernameSessionKey, user);
     }
 
     @GetMapping("/register")
@@ -67,7 +67,7 @@ public class AuthenticationController {
     public String processLogin(@ModelAttribute LoginDTO loginDTO, Model model, HttpServletRequest request) {
         User userLogged = userRepository.findByUsername(loginDTO.getUsername());
         setUsernameSessionKey(request.getSession(), userLogged);
-        request.setAttribute("loggedUser", userLogged);
+        //request.setAttribute("loggedUser", userLogged);
         //User seeValue = getUserFromSession(request.getSession());
 
         return "redirect:";

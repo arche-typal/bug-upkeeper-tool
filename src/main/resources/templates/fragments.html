@@ -10,7 +10,7 @@
 <body>
 <header th:fragment="header">
 
-        <p th:text="*{session.user != null}? *{session.user} : 'You are not logged in.'"></p>
+        <p th:text="*{session.user != null}? 'Logged in as: ' + *{session.user.username} : 'You are not logged in.'"></p>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
