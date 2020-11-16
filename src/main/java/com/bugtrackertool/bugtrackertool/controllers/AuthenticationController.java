@@ -62,4 +62,14 @@ public class AuthenticationController {
         model.addAttribute(new LoginDTO());
         return "login";
     }
+
+    @PostMapping("/login")
+    public String processLogin(@ModelAttribute LoginDTO loginDTO, Model model, HttpServletRequest request) {
+        User userLogged = userRepository.findByUsername(loginDTO.getUsername());
+        setUsernameSessionKey(request.getSession(), userLogged);
+        request.setAttribute("loggedUser", userLogged);
+        //User seeValue = getUserFromSession(request.getSession());
+
+        return "redirect:";
+    }
 }
