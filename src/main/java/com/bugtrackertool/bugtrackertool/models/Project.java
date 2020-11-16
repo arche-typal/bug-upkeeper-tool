@@ -1,6 +1,8 @@
 package com.bugtrackertool.bugtrackertool.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Project {
@@ -10,6 +12,9 @@ public class Project {
     private int id;
 
     private String name;
+
+    @OneToMany(mappedBy = "project")
+    private final List<Ticket> tickets = new ArrayList<>();
 
 //    @ManyToOne
 //    private Ticket ticket;
@@ -31,6 +36,10 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
     @Override
