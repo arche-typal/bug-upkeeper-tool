@@ -31,13 +31,9 @@ public class TicketController {
         }
         else {
             Optional<Project> projectResult = projectRepository.findById(projectId);
-//            if(!(projectResult.isPresent())) {
-//                model.addAttribute();
-//            }
             Project project = projectResult.get();
             model.addAttribute("tickets", project.getTickets());
         }
-        //model.addAttribute("tickets", ticketRepository.findAll());
         return "ticket/index";
     }
 
@@ -50,8 +46,6 @@ public class TicketController {
 
     @PostMapping("/create")
     public String processTicket(@ModelAttribute Ticket ticket) {
-
-        //Ticket newTicket = new Ticket(ticketDTO.getName(),ticketDTO.getDescription(),ticketDTO.getProject());
 
         ticketRepository.save(ticket);
         return "redirect:";
@@ -66,12 +60,10 @@ public class TicketController {
     }
 
     @PostMapping("/edit/{ticketId}")
-    public String processEditForm(@ModelAttribute Ticket ticket, Integer ticketId) {//(int ticketId, String name, String description, Project project) {
+    public String processEditForm(@ModelAttribute Ticket ticket, Integer ticketId) {
 
-//        Integer projectId = project.getId();
-//        Project newProject = projectRepository.findById(projectId).get();
+
         Ticket newTicket = new Ticket(ticketId, ticket.getName(), ticket.getDescription(), ticket.getProject());
-
         ticketRepository.save(newTicket);
 
         return "redirect:/ticket";
@@ -84,13 +76,4 @@ public class TicketController {
         return "redirect:/ticket";
     }
 
-//    @PostMapping("/delete/{ticketId}")
-//    public String delete(int ticketId, String name, String description, Project project) {
-//        String test = "test";
-//        Ticket ticket = new Ticket(ticketId, name, description, project);
-//
-//        ticketRepository.save(ticket);
-//
-//        return "redirect:/ticket";
-//    }
 }

@@ -4,16 +4,19 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 <a href = "/ticket/create">Create A Ticket</a>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Name:</th>
-        <th>Description:</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Project</th>
+        <th></th>
     </tr>
     </thead>
     <tr th:each="ticket : ${tickets}">
         <td th:text="${ticket.name}"></td>
         <td th:text="${ticket.description}"></td>
+        <td th:text="${ticket.project.name}"></td>
         <td>
             <a th:href="@{/ticket/edit/{id}(id=${ticket.id})}">Edit</a>
             <a th:href="@{/ticket/delete/{id}(id=${ticket.id})}">Delete</a>
