@@ -4,6 +4,7 @@
 <body class="container">
 <header th:replace="fragments :: header"></header>
 <form th:action="@{/ticket/edit/} + ${ticket.id}" method="post">
+
     <div class="form-group">
         <label th:for="name">Title
             <input class="form-control" th:field="${ticket.name}">

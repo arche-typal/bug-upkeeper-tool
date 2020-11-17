@@ -49,7 +49,7 @@ public class TicketController {
     }
 
     @PostMapping("/create")
-    public String processTicket(Model model, @ModelAttribute Ticket ticket) {
+    public String processTicket(@ModelAttribute Ticket ticket) {
 
         //Ticket newTicket = new Ticket(ticketDTO.getName(),ticketDTO.getDescription(),ticketDTO.getProject());
 
@@ -66,12 +66,31 @@ public class TicketController {
     }
 
     @PostMapping("/edit/{ticketId}")
-    public String processEditForm(int ticketId, String name, String description, Project project) {
-        String test = "test";
-        Ticket ticket = new Ticket(ticketId, name, description, project);
+    public String processEditForm(@ModelAttribute Ticket ticket, Integer ticketId) {//(int ticketId, String name, String description, Project project) {
 
-        ticketRepository.save(ticket);
+//        Integer projectId = project.getId();
+//        Project newProject = projectRepository.findById(projectId).get();
+        Ticket newTicket = new Ticket(ticketId, ticket.getName(), ticket.getDescription(), ticket.getProject());
+
+        ticketRepository.save(newTicket);
 
         return "redirect:/ticket";
     }
+
+    @GetMapping("/delete/{ticketId}")
+    public String delete(Model model, @PathVariable Integer ticketId) {
+
+        ticketRepository.deleteById(ticketId);
+        return "redirect:/ticket";
+    }
+
+//    @PostMapping("/delete/{ticketId}")
+//    public String delete(int ticketId, String name, String description, Project project) {
+//        String test = "test";
+//        Ticket ticket = new Ticket(ticketId, name, description, project);
+//
+//        ticketRepository.save(ticket);
+//
+//        return "redirect:/ticket";
+//    }
 }

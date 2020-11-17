@@ -16,6 +16,7 @@
         <td th:text="${ticket.description}"></td>
         <td>
             <a th:href="@{/ticket/edit/{id}(id=${ticket.id})}">Edit</a>
+            <a th:href="@{/ticket/delete/{id}(id=${ticket.id})}">Delete</a>
         </td>
     </tr>
 </table>
