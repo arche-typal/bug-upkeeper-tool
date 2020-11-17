@@ -13,11 +13,14 @@ public class Project {
 
     private String name;
 
+    private String description;
+
     @OneToMany(mappedBy = "project")
     private final List<Ticket> tickets = new ArrayList<>();
 
-    public Project(String name) {
+    public Project(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
     public Project() {}
@@ -32,6 +35,14 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Ticket> getTickets() {

@@ -8,12 +8,14 @@
 <table>
     <thead>
         <tr>
-            <th>Name:</th>
+            <th>Name</th>
+            <th>Description</th>
             <th>Tickets</th>
         </tr>
     </thead>
     <tr th:each="project : ${projects}">
         <td th:text="${project.name}"></td>
+        <td th:text="${project.description}"></td>
         <td><a th:text="|View Tickets|" th:href="'/ticket?projectId=' + ${project.id}"></a></td>
     </tr>
 </table>
