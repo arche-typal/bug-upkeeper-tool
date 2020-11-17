@@ -16,10 +16,6 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private final List<Ticket> tickets = new ArrayList<>();
 
-//    @ManyToOne
-//    private Ticket ticket;
-
-
     public Project(String name) {
         this.name = name;
     }

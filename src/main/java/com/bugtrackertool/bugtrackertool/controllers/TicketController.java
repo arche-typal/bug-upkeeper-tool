@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("ticket")
 public class TicketController {
@@ -22,9 +24,20 @@ public class TicketController {
     private ProjectRepository projectRepository;
 
     @GetMapping()
-    public String ticketDashboard(Model model) {
+    public String ticketDashboard(Model model, @RequestParam(required = false) Integer projectId) {
 
-        model.addAttribute("tickets", ticketRepository.findAll());
+        if(projectId == null) {
+            model.addAttribute("tickets", ticketRepository.findAll());
+        }
+        else {
+            Optional<Project> projectResult = projectRepository.findById(projectId);
+//            if(!(projectResult.isPresent())) {
+//                model.addAttribute();
+//            }
+            Project project = projectResult.get();
+            model.addAttribute("tickets", project.getTickets());
+        }
+        //model.addAttribute("tickets", ticketRepository.findAll());
         return "ticket/index";
     }
 
