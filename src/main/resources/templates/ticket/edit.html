@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
-<form method="post">
+<form th:action="@{/ticket/edit/} + ${ticket.id}" method="post">
     <div class="form-group">
         <label th:for="name">Title
             <input class="form-control" th:field="${ticket.name}">
@@ -16,7 +16,7 @@
 
     </div>
     <div class="form-group">
-        <label>Add Project
+        <label>Select Project
             <!--            <div th:if="${mods != null}">-->
             <select th:field="${ticket.project}">
 
@@ -29,7 +29,8 @@
         </label>
 
     </div>
-    <input type="submit" class="btn btn-primary" value="Submit">
+    <input type="submit" class="btn btn-primary" value="Edit">
+    <input type="hidden" th:value="${ticket.id}" name="ticketId" />
 </form>
 </body>
 </html>

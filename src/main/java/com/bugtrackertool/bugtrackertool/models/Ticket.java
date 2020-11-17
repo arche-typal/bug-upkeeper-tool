@@ -1,10 +1,20 @@
 package com.bugtrackertool.bugtrackertool.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Ticket extends AbstractEntity{
+public class Ticket{
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    public int getId() {
+        return id;
+    }
 
     private String name;
 
@@ -12,6 +22,13 @@ public class Ticket extends AbstractEntity{
 
     @ManyToOne
     private Project project;
+
+    public Ticket(int id, String name, String description, Project project) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.project = project;
+    }
 
     public Ticket(String name, String description, Project project) {
         this.name = name;

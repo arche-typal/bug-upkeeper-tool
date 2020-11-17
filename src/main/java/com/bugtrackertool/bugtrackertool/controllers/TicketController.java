@@ -48,12 +48,30 @@ public class TicketController {
         return "ticket/create";
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public String processTicket(Model model, @ModelAttribute Ticket ticket) {
 
         //Ticket newTicket = new Ticket(ticketDTO.getName(),ticketDTO.getDescription(),ticketDTO.getProject());
 
         ticketRepository.save(ticket);
         return "redirect:";
+    }
+
+    @GetMapping("/edit/{ticketId}")
+    public String displayEditForm(Model model, @PathVariable Integer ticketId) {
+
+        model.addAttribute("ticket",ticketRepository.findById(ticketId).get());
+        model.addAttribute("projects", projectRepository.findAll());
+        return "ticket/edit";
+    }
+
+    @PostMapping("/edit/{ticketId}")
+    public String processEditForm(int ticketId, String name, String description, Project project) {
+        String test = "test";
+        Ticket ticket = new Ticket(ticketId, name, description, project);
+
+        ticketRepository.save(ticket);
+
+        return "redirect:/ticket";
     }
 }
